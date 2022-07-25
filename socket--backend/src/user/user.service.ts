@@ -53,15 +53,15 @@ export class UserService {
 
   async updateUserById(id: string, userData: UserRequestDto) {
     try {
-      // const user = await this.userModel.findOne({ _id: id });
-      // if(!user){
-      //   throw TypeExceptions.UserNotFound();
-      // }
+      const user = await this.userModel.findOne({ _id: id });
+      if (user[0] === 0) {
+        return TypeExceptions.UserNotFound();
+      }
       return await this.userModel.findOneAndUpdate({ _id: id }, userData, {
         new: true,
       });
     } catch (err) {
-      throw new NotFoundException(err.message);
+      return TypeExceptions.UserNotExists();
     }
   }
 
