@@ -1,6 +1,4 @@
-
 import { ApiProperty } from '@nestjs/swagger';
-
 export class CreateUserDto {
   @ApiProperty()
   email: string;
@@ -20,4 +18,3 @@ export class CreateUserDto {
   @ApiProperty()
   document: string;
 }
-
