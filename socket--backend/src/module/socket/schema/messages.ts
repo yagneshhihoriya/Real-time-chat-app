@@ -4,7 +4,7 @@ export const MessagesSchema = new Schema(
   {
     sender: {
       type: Schema.Types.ObjectId,
-      ref: 'UserModel'
+      ref: 'UserModel',
     },
     receiver: Schema.Types.ObjectId,
     message: String,
