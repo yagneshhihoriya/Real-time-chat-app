@@ -20,6 +20,32 @@ export class UserService {
     return this.userModel.find();
   }
 
+  async findUser(page: number, limit: number) {
+    const found = await this.userModel
+      .find()
+      .sort({ name: -1 })
+      .skip(limit * (page - 1))
+      .limit(limit);
+
+    return found;
+  }
+
+  async findUserByFilter(page: number, limit: number, search: string) {
+    try {
+      const filter = await this.userModel
+        .find({
+          $or: [{ name: { $regex: '^' + search + '.*', $options: 'i' } }],
+        })
+        .sort({ name: -1 })
+        .skip(limit * (page - 1))
+        .limit(limit);
+
+      return filter;
+    } catch (error) {
+      return error;
+    }
+  }
+
   async getUserById(id: string) {
     try {
       const find = await this.userModel.findById(id);

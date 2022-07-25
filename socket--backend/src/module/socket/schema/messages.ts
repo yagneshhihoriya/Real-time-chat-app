@@ -7,8 +7,11 @@ export const MessagesSchema = new Schema(
       ref: 'UserModel',
     },
     receiver: Schema.Types.ObjectId,
+
     message: String,
+
     createAt: Date,
+
     room: Schema.Types.ObjectId,
   },
   {

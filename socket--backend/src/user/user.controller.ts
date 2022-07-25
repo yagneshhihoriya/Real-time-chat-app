@@ -9,8 +9,9 @@ import {
   HttpStatus,
   HttpException,
   Delete,
+  Query,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiBody, ApiParam } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiParam, ApiQuery } from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { JwtAuthGuard } from '../auth/guards/auth.guard';
 import { UserRequestDto } from './dto/userDto';
@@ -21,6 +22,8 @@ import { TypeExceptions } from './../exception';
 @ApiBearerAuth()
 @Controller()
 export class UserController {
+  userModel: any;
+  productService: any;
   constructor(private readonly appService: UserService) {}
 
   @ApiBody({ type: UserRequestDto })
@@ -53,6 +56,25 @@ export class UserController {
       success: true,
       users,
     };
+  }
+
+  @Get()
+  @ApiQuery({ name: 'page', required: false })
+  @ApiQuery({ name: 'limit', required: false })
+  @ApiQuery({ name: 'search', required: false })
+  findAllUser(
+    @Query('page') page: number,
+    @Query('limit') limit: number,
+    @Query('search') search: string,
+  ) {
+    if (limit == null || (page == null && search == undefined)) {
+      return this.appService.getAllUser();
+    }
+    if (search == null || search == undefined) {
+      return this.appService.findUser(page, limit);
+    } else {
+      return this.appService.findUserByFilter(page, limit, search);
+    }
   }
 
   @UseGuards(JwtAuthGuard)

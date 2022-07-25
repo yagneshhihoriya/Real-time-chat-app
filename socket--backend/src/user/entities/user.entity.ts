@@ -8,8 +8,8 @@ export class User {
   @Prop()
   name: string;
 
-  @Prop({nullable:true})
-  admin: Boolean;
+  @Prop({ nullable: true })
+  admin: boolean;
 
   @Prop()
   password: string;
@@ -21,8 +21,7 @@ export class User {
   document: string;
 
   @Prop()
-  contact: String
-
+  contact: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

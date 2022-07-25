@@ -63,10 +63,6 @@ export class SocketIoGateway {
   @SubscribeMessage('getAllRooms')
   async getAllRooms(client: Socket, payload: any) {
     const rooms = await this.socketService.getAllRooms(payload.userId);
-
-    // for (const room of rooms) {
-    //   await client.join(`room-${room._id?.toString()}`);
-    // }
     client.emit('roomsList', rooms);
   }
 
@@ -120,7 +116,7 @@ export class SocketIoGateway {
   }
 
   handleConnection(client: Socket, ...args: any[]) {
-    // console.log(`Client connected: ${client.id}`, args);
+    console.log(`Client connected: ${client.id}`, args);
   }
 
   handleDisconnect(client: Socket, ...args: any[]) {
