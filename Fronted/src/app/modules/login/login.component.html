@@ -1,0 +1,40 @@
+<div class="container login-ct" [formGroup]="loginForm">
+  <div class="card bg-slategray shadow p-4 mt-4">
+    <h3 class="display-4">Login</h3>
+    <div>
+      <div class="mt-2 fdc">
+        <label class="form-label" for="in-email">User name</label>
+        <input
+          class="form-control"
+          type="email"
+          name="email"
+          id="in-email"
+          formControlName="email"
+        />
+        <small *ngIf="getFormControlError(loginForm.controls['email'])" class="d-block fst-italic text-danger">
+          Please enter email
+        </small>
+      </div>
+      <div class="mt-2">
+        <div class="fdc">
+          <label for="in-email" class="form-label">Password</label>
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            id="in-password"
+            formControlName="password"
+          />
+          <small *ngIf="getFormControlError(loginForm?.controls['password'])" class="d-block fst-italic text-danger">
+            Please enter email
+          </small>
+        </div>
+      </div>
+      <div class="pt-2">
+        <button class="btn btn-primary text-light" type="button" (click)="login()">
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

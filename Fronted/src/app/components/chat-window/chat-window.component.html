@@ -1,0 +1,31 @@
+<div class="chat-window-container">
+  <div class="label" *ngIf="!expanded">
+    <div (click)="toggleWindow()">
+      {{chatUser.name}}
+    </div>
+    <button (click)="closeWindow()" class="btn"><i class="fa fa-times"></i></button>
+  </div>
+  <div class="expanded-window" *ngIf="expanded">
+    <div class="window-header">
+      <div>
+        {{chatUser.name}}
+      </div>
+      <div>
+        <button class="btn" (click)="toggleWindow()"><i class="fa fa-caret-down"></i></button>
+        <button class="btn" (click)="closeWindow()"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="messages-container" #messageContainer>
+      <div class="messages">
+        <div class="message" [ngClass]="{right: message.sender === 'self' || message.sender === currentUser._id}"
+          *ngFor="let message of messages">
+          {{message.message}}
+        </div>
+      </div>
+      <div class="text-control">
+        <input type="text" placeholder="Enter message" [(ngModel)]="textBox" (keydown.enter)="onSend()">
+        <button class="btn btn-sm me-1" type="submit" (click)="onSend()"><i class="fa fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

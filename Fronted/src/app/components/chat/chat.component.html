@@ -1,0 +1,59 @@
+<div class="chat-container">
+  <div class="chat-drawer-container">
+    <div class="chat-drawer" *ngIf="drawerOpen">
+      <div class="drawer-header">
+        <div>
+          Online users
+        </div>
+        <div class="action">
+          <button class="btn" (click)="toggleDrawer()">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <ng-container *ngFor="let user of onlineUsers">
+        <div class="list-item" *ngIf="user?.id !== currentUserDetails?._id" (click)="onItemClick(user, 'user')">
+          {{user.name}}
+        </div>
+      </ng-container>
+      <div class="p-2" *ngIf="onlineUsers.length === 1">
+        <div class="text-center fst-italic text-dark">No one is available</div>
+      </div>
+      <div class="drawer-header">
+        <div>
+          Rooms
+        </div>
+        <div class="action">
+          <button class="btn" (click)="onAddRoom()">
+            <i class="fa fa-add"></i>
+          </button>
+        </div>
+      </div>
+      <ng-container *ngFor="let room of rooms">
+        <div class="list-item" (click)="onItemClick(room, 'room')">
+          {{room.name}}
+        </div>
+      </ng-container>
+      <div class="p-2" *ngIf="!rooms.length">
+        <div class="text-center fst-italic text-dark">You are not part of any room</div>
+      </div>
+    </div>
+    <div class="drawer-button">
+      <button class="btn btn-lg btn-primary" (click)="toggleDrawer()"><i class="fa fa-comment"></i></button>
+    </div>
+  </div>
+  <div class="chat-bar">
+    <ng-container *ngFor="let chatUser of chatWindow">
+      <ng-container *ngIf="chatUser.type === 'room'">
+        <app-room-window [room]="chatUser" [currentUser]="currentUserDetails" (close)="handleClose($event)">
+        </app-room-window>
+      </ng-container>
+      <ng-container *ngIf="chatUser.type === 'user'">
+        <app-chat-window [user]="chatUser" (close)="handleClose($event)"></app-chat-window>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<app-add-room *ngIf="createRoomModal" [creator]="currentUserDetails" (close)="handleCloseCreateRoom($event)">
+</app-add-room>

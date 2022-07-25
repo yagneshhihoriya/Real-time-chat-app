@@ -1,0 +1,21 @@
+.modal {
+  display: flex !important;
+  align-items: center !important;
+  .modal-dialog {
+    flex-grow: 1;
+  }
+}
+.room-modal {
+  .modal-content {
+    table {
+      td {
+        color: rgb(19, 18, 18);
+        border: 0;
+        vertical-align: middle;
+      }
+    }
+    border: 1px solid white;
+    background-color: #fff !important;
+    box-shadow: 5px 5px 15px #ccc;
+  }
+}

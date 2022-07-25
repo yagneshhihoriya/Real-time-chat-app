@@ -1,0 +1,21 @@
+.user-form {
+  .title {
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px;
+  }
+  .edit-table {
+    margin: auto;
+    width: 100%;
+    max-width: 450px;
+  }
+  input {
+    border: 1px solid #3d5afe;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  input[type="checkbox"] {
+    width: auto;
+  }
+}

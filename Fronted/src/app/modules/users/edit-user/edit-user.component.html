@@ -1,0 +1,131 @@
+<div class="container user-form">
+  <div class="title">{{ userId ? "Edit" : "Add" }} User</div>
+  <form [formGroup]="userForm">
+    <div class="table-container">
+      <table class="edit-table">
+        <tr>
+          <td class="px-3 py-2">
+            <label for="in-name">Name</label>
+          </td>
+          <td class="px-3 py-2">
+            <input
+              type="text"
+              name="name"
+              id="in-name"
+              formControlName="name"
+            />
+            <small
+              class="d-block text-danger fst-italic"
+              *ngIf="getFormControlError(userForm.controls.name)"
+            >
+              Please enter name
+            </small>
+          </td>
+        </tr>
+        <tr>
+          <td class="px-3 py-2">
+            <label for="in-email">Email</label>
+          </td>
+          <td class="px-3 py-2">
+            <input
+              type="email"
+              name="email"
+              id="in-email"
+              formControlName="email"
+            />
+            <small
+              class="d-block text-danger fst-italic"
+              *ngIf="getFormControlError(userForm.controls.email)"
+            >
+              Please enter email
+            </small>
+            <small
+              class="d-block text-danger fst-italic"
+              *ngIf="getFormControlError(userForm.controls.email, 'pattern')"
+            >
+              Please enter valid email
+            </small>
+          </td>
+        </tr>
+        <tr>
+          <td class="px-3 py-2">
+            <label for="in-password">Password</label>
+          </td>
+          <td class="px-3 py-2">
+            <input
+              type="password"
+              name="password"
+              id="in-password"
+              formControlName="password"
+            />
+            <small
+              class="d-block text-danger fst-italic"
+              *ngIf="getFormControlError(userForm.controls.password)"
+            >
+              Please enter password
+            </small>
+            <small
+              class="d-block text-danger fst-italic"
+              *ngIf="
+                getFormControlError(userForm.controls.password, 'minlength')
+              "
+            >
+              Password must be minimum of 6 digits
+            </small>
+          </td>
+        </tr>
+        <tr>
+          <td class="px-3 py-2">
+            <label for="in-contact">Contact</label>
+          </td>
+          <td class="px-3 py-2">
+            <input
+              type="tel"
+              name="contact"
+              id="in-contact"
+              formControlName="contact"
+            />
+            <small
+              class="d-block text-danger fst-italic"
+              *ngIf="getFormControlError(userForm.controls.contact)"
+            >
+              Please enter contact
+            </small>
+            <small
+              class="d-block text-danger fst-italic"
+              *ngIf="
+                getFormControlError(userForm.controls.contact, 'minlength') ||
+                getFormControlError(userForm.controls.contact, 'maxlength')
+              "
+            >
+              Contact must be of 10 digits
+            </small>
+          </td>
+        </tr>
+        <tr>
+          <td class="px-3 py-2">
+            <label for="in-admin">Make admin</label>
+          </td>
+          <td class="px-3 py-2">
+            <input
+              type="checkbox"
+              name="admin"
+              id="in-admin"
+              formControlName="admin"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="px-3 py-2" colspan="2">
+            <button class="btn btn-md btn-primary text-light me-2" (click)="saveHandler()">
+              Save
+            </button>
+            <button class="btn btn-md btn-danger text-light" (click)="onCancel()">
+              Cancel
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>

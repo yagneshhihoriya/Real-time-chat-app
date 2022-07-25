@@ -1,0 +1,36 @@
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': 'block'}">
+  <div class="modal-dialog modal-lg room-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Create Room</h4>
+        <button type="button"  class="close btn btn-outline-danger" aria-label="Close" (click)="onCloseHandled()"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Room name</td>
+              <td>
+                <div>
+                  <input class="form-control" type="text" [(ngModel)]="roomName" placeholder="Enter room name">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Select users</td>
+              <td>
+                <ng-select [items]="users" bindLabel="name" bindValue="_id" [(ngModel)]="selectedUsers" [multiple]="true">
+                </ng-select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary text-primary hover-white" (click)="onSave()">Save</button>
+        <button type="button" class="btn btn-outline-danger text-danger hover-white" (click)="onCloseHandled()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

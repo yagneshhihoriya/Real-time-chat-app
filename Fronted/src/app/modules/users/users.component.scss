@@ -1,0 +1,40 @@
+.all-users {
+   .title {
+    font-size: 2rem;
+   }
+  .user-table {
+    margin-top: 20px;
+    border-spacing: 10px 0;
+    i {
+      color: #3d5afe;
+    }
+    thead {
+      background-color: #3d5afe;
+      th {
+        color: #fff;
+        padding: 15px 12px;
+        &:first-child {
+          border-top-left-radius: 8px;
+        }
+        &:last-child {
+          border-top-right-radius: 8px;
+        }
+      }
+    }
+    td,
+    th {
+      color: rgb(19, 18, 18);
+    }
+
+    tr {
+      margin: 10px 0;
+      border-bottom: 1px solid #3d5afe;
+    }
+
+    td {
+      padding: 15px;
+      vertical-align: middle;
+      margin-bottom: 10px;
+    }
+  }
+}

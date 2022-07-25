@@ -1,0 +1,38 @@
+<div class="chat-window-container">
+  <div class="label" *ngIf="!expanded">
+    <div (click)="toggleWindow()">
+      {{room.name}}
+    </div>
+    <button (click)="closeWindow()" class="btn"><i class="fa fa-times"></i></button>
+  </div>
+  <div class="expanded-window" *ngIf="expanded">
+    <div class="window-header">
+      <div>
+        {{room.name}}
+      </div>
+      <div>
+        <button title="Exit group" class="btn" (click)="onExitRoom()"><i
+            class="fa fa-arrow-right-from-bracket"></i></button>
+        <button title="Minimize" class="btn" (click)="toggleWindow()"><i class="fa fa-caret-down"></i></button>
+        <button title="Close window" class="btn" (click)="closeWindow()"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="messages-container" #messageContainer>
+      <div class="messages">
+        <div class="message" [ngClass]="{right: message.sender === 'self' || message?.sender?._id === currentUser._id}"
+          *ngFor="let message of messages">
+          <div class="user">
+            {{message?.sender?.name ? message?.sender?.name : (message?.sender === 'self' ? currentUser.name :
+            message.name) }}
+            <!-- {{message | json}} -->
+          </div>
+          {{message.message}}
+        </div>
+      </div>
+      <div class="text-control">
+        <input type="text" placeholder="Enter message" [(ngModel)]="textBox" (keydown.enter)="onSend()">
+        <button class="btn btn-sm me-1" (click)="onSend()"><i class="fa fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<nav class="navbar navbar-light p-3 shadow" *ngIf="isLoggedIn">
+  <div>
+    <ng-container *ngIf="isLoggedIn">
+      <div class="d-flex">
+        <h3 class="title" routerLink="/users">Users</h3>
+        <!-- <button class="btn btn-sm text-light" routerLink="/form-builder">
+        </button> -->
+      </div>
+    </ng-container>
+  </div>
+  <button class="btn btn-sm btn-outline-danger text-danger hover-white" *ngIf="isLoggedIn" (click)="onLogout()">
+    Logout
+  </button>
+</nav>
+<router-outlet></router-outlet>
+<app-chat *ngIf="isLoggedIn"></app-chat>

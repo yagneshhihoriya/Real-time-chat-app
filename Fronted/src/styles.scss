@@ -1,0 +1,68 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+i {
+  color: white;
+}
+.hover-white:hover {
+  color: #fff !important;
+}
+.table {
+  tr, td {
+    color: white;
+    a {
+      color: white;
+    }
+  }
+}
+
+
+.modal-content {
+  border: 1px solid white;
+  background-color: black !important;
+}
+
+input {
+  border: none;
+  padding: 8px 12px;
+}
+.fdc {
+  display: flex;
+  flex-direction: column;
+}
+.text-danger {
+  color: rgb(230, 43, 43) !important;
+}
+.btn-primary {
+  // padding: 12px 40px;
+  background-color: #3d5afe;
+  color: #fff;
+  cursor: pointer;
+  // border-radius: 8px;
+  border: 0;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: lightgray;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: lightgray;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: lightgray;
+}
+
+// .table-container {
+//   table {
+//     tr, th {
+//       td {
+//         padding: 4px 7px;
+//       }
+//     }
+//   }
+// }

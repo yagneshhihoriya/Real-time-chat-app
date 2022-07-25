@@ -1,0 +1,54 @@
+<div class="container mt-2 all-users">
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <div class="display-3 title">Users</div>
+    <div>
+      <button class="btn btn-md btn-primary text-light mt-2" routerLink="/users/create">
+        Create
+      </button>
+    </div>
+  </div>
+  <div class="table-responsive" *ngIf="users.length">
+    <table class="table table-stripeds user-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <!-- <th>Document</th> -->
+          <th class="text-center">Is Admin</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.contact }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <!-- <a *ngIf="user.document" target="_blank" href="{{ uploadURL + '/public/' + user.document }}">
+              {{ user.document }}
+            </a>
+            <span *ngIf="!user.document"> - </span> -->
+          </td>
+          <td class="text-center">
+            <i class="fa bordered-primary" [ngClass]="user.admin ? 'fa-check' : 'fa-times'"></i>
+          </td>
+
+          <td class="text-center">
+            <!-- <button title="Upload Document" class="btn btn-sm me-2 text-light" (click)="uploadUserHandler(user?._id || '')">
+              <i class="fa fa-file"></i>
+            </button> -->
+            <button title="Delete User" class="btn btn-sm me-2 text-light" (click)="deleteHandler(user?._id || '')">
+              <i class="fa fa-trash"></i>
+            </button>
+            <button title="Edot user" class="btn btn-sm me-2 text-light" [routerLink]="['/users', user._id]">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!users.length">No users found</div>
+</div>
